@@ -20,6 +20,9 @@ class SettingsModule(AdminModule):
     name = _("System Settings")
     breadcrumbs_menu_entry = MenuEntry(name, url="shuup_admin:settings.list")
 
+    def get_required_permissions(self):
+        return get_default_model_permissions(Shop)
+
     def get_urls(self):
         return [
             admin_url(
