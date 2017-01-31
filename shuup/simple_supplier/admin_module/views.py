@@ -27,16 +27,8 @@ class StocksListView(PicotableListView):
     model = Product
     default_columns = [
         Column(
-            "sku", _("SKU"), sort_field="product__sku", display="product__sku", linked=True,
-            filter_config=TextFilter(filter_field="product__sku", placeholder=_("Filter by SKU..."))
-        ),
-        Column(
             "name", _("Name"), sort_field="product__translations__name", display="product__name", linked=True,
             filter_config=TextFilter(filter_field="product__translations__name", placeholder=_("Filter by name..."))
-        ),
-        Column(
-            "supplier", _("Supplier"), display="supplier", linked=False,
-            filter_config=ChoicesFilter(Supplier.objects.filter(module_identifier="simple_supplier"))
         ),
         Column(
             "stock_information", _("Stock information"), display="get_stock_information",
@@ -53,7 +45,11 @@ class StocksListView(PicotableListView):
         self.columns = self.default_columns
 
     def get_object_abstract(self, instance, item):
-        item.update({"_linked_in_mobile": False, "_url": self.get_object_url(instance.product)})
+        wanted_item = instance.product
+        if hasattr(wanted_item, 'book'):
+            wanted_item = wanted_item.book
+
+        item.update({"_linked_in_mobile": False, "_url": self.get_object_url(wanted_item)})
         return [
             {"text": item.get("name"), "class": "header"},
             {"title": "", "text": item.get("sku")},
