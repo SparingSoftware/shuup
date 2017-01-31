@@ -1,7 +1,7 @@
 {% from "shuup/admin/macros/block.jinja" import link_block %}
 
 {% set categories = shuup_admin.get_menu_entry_categories() %}
-{% set quicklinks = shuup_admin.get_quicklinks() %}
+{% set quicklinks = {} %}
 
 {% for category in categories %}
     {% set width = "double" if category.children|length >= 2 else "single" %}
