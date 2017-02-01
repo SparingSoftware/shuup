@@ -6,6 +6,7 @@
 # This source code is licensed under the OSL-3.0 license found in the
 # LICENSE file in the root directory of this source tree.
 import six
+
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from filer.models import File
@@ -18,6 +19,7 @@ from shuup.admin.utils.urls import (
 )
 from shuup.admin.views.home import HelpBlockCategory, SimpleHelpBlock
 from shuup.core.models import Category
+from shuup.core.models import Shop
 
 
 class CategoryModule(AdminModule):
@@ -84,7 +86,11 @@ class CategoryModule(AdminModule):
         )
 
     def get_required_permissions(self):
-        return get_default_model_permissions(Category) | get_default_model_permissions(File)
+        return (
+            get_default_model_permissions(Category) |
+            get_default_model_permissions(File) |
+            get_default_model_permissions(Shop)
+        )
 
     def get_model_url(self, object, kind):
         return derive_model_url(Category, "shuup_admin:category", object, kind)
