@@ -56,14 +56,15 @@ def setup_wizard_complete():
     :return: whether setup wizard needs to be run
     :rtype: boolean
     """
-    if getattr(settings, "SHUUP_ENABLE_MULTIPLE_SHOPS", False):
-        # setup wizard is only applicable in single shop mode
-        return True
-    shop = Shop.objects.first()
-    complete = configuration.get(shop, "setup_wizard_complete")
-    if complete is None:
-        return not setup_wizard_visible_panes(shop)
-    return complete
+    # if getattr(settings, "SHUUP_ENABLE_MULTIPLE_SHOPS", False):
+    #     # setup wizard is only applicable in single shop mode
+    #     return True
+    # shop = Shop.objects.first()
+    # complete = configuration.get(shop, "setup_wizard_complete")
+    # if complete is None:
+    #     return not setup_wizard_visible_panes(shop)
+    # return complete
+    return True
 
 
 def setup_wizard_visible_panes(shop):
