@@ -25,36 +25,18 @@
 
     function slugify(text) {
         text = text.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
-        .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-        .replace(/\-\-+/g, '-') // Replace multiple - with single -
-        .replace(/^-+/, '') // Trim - from start of text
-        .replace(/-+$/, ''); // Trim - from end of text
-
-        // Replace special characters
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-            for (var _iterator = specialChars[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var c = _step.value;
-
-                text = text.replace(c, specialChars[c]);
-            }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
+            .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+            .replace(/\-\-+/g, '-') // Replace multiple - with single -
+            .replace(/^-+/, '') // Trim - from start of text
+            .replace(/-+$/, '') // Trim - from end of text
+            // Replace special characters
+            .replace(/ą/g, 'a')
+            .replace(/ć/g, 'c')
+            .replace(/ę/g, 'e')
+            .replace(/ń/g, 'n')
+            .replace(/ó/g, 'o')
+            .replace(/ś/g, 's')
+            .replace(/[źż]/g, 'z');
 
         return text;
     }
@@ -63,5 +45,6 @@
         var val = $(this).val();
         $(this).parent().next().find(".slugfield").val(slugify(val));
     }
+
     $(document).on("keyup", ".autoupdate-slug", autoSlugify);
 })();
