@@ -24,8 +24,9 @@
     };
 
     function slugify(text) {
-        text = text.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
-            .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+        text = text.toString().toLowerCase()
+            .replace(/\s+/g, '-') // Replace spaces with -
+            .replace(/[^[\w\-ąćęńłóśźż]+/g, '') // Remove all non-word chars
             .replace(/\-\-+/g, '-') // Replace multiple - with single -
             .replace(/^-+/, '') // Trim - from start of text
             .replace(/-+$/, '') // Trim - from end of text
@@ -34,6 +35,7 @@
             .replace(/ć/g, 'c')
             .replace(/ę/g, 'e')
             .replace(/ń/g, 'n')
+            .replace(/ł/g, 'l')
             .replace(/ó/g, 'o')
             .replace(/ś/g, 's')
             .replace(/[źż]/g, 'z');
