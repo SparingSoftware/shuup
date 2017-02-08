@@ -84,7 +84,7 @@ class Address(NameMixin, ShuupModel):
     email = models.EmailField(verbose_name=_('email'), max_length=128, blank=True, help_text=_(
         "The primary email for the address."
     ))
-    street = models.CharField(verbose_name=_('street'), max_length=255, help_text=_(
+    street = models.CharField(verbose_name=_('street'), max_length=255, blank=True, help_text=_(
         "The street address."
     ))
     street2 = models.CharField(verbose_name=_('street (2)'), max_length=255, blank=True, help_text=_(
@@ -96,7 +96,7 @@ class Address(NameMixin, ShuupModel):
     postal_code = models.CharField(verbose_name=_('postal code'), max_length=64, blank=True, help_text=_(
         "The address postal/zip code."
     ))
-    city = models.CharField(verbose_name=_('city'), max_length=255, help_text=_(
+    city = models.CharField(verbose_name=_('city'), max_length=255, blank=True, help_text=_(
         "The address city."
     ))
     region_code = models.CharField(verbose_name=_('region code'), max_length=16, blank=True, help_text=_(
