@@ -87,13 +87,7 @@ class ProductModule(AdminModule):
 
     def get_menu_entries(self, request):
         return [
-            MenuEntry(
-                text=_("Products"),
-                icon="fa fa-cube",
-                url="shuup_admin:shop_product.list",
-                category=PRODUCTS_MENU_CATEGORY,
-                ordering=1
-            )
+
         ]
 
     def get_search_results(self, request, query):
