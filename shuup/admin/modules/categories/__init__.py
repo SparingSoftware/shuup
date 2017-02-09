@@ -50,10 +50,6 @@ class CategoryModule(AdminModule):
 
     def get_menu_entries(self, request):
         return [
-            MenuEntry(
-                text=_("Categories"), icon="fa fa-sitemap",
-                url="shuup_admin:category.list", category=PRODUCTS_MENU_CATEGORY, ordering=2
-            )
         ]
 
     def get_search_results(self, request, query):
