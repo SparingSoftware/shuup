@@ -63,9 +63,9 @@ class AdminFieldRenderer(FieldRenderer):
     def append_to_field(self, html):
         if self.field_help:
             if self.field.field.required:
-                self.field_help = _("Required. %s" % self.field_help)
+                self.field_help = _("Required") + _("%s" % self.field_help)
             else:
-                self.field_help = _("Optional. %s" % self.field_help)
+                self.field_help = _("Optional") + _("%s" % self.field_help)
             html += "<span class='help-popover-btn'>"
             # tabindex is required for popover to function but we don't actually want to be able to tab to it
             # so set a large tabindex
