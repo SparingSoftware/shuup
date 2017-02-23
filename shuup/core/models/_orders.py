@@ -946,7 +946,10 @@ class Order(MoneyPropped, models.Model):
         return (self.status.role == OrderStatusRole.COMPLETE)
 
     def can_set_complete(self):
-        return not (self.is_complete() or self.is_canceled() or bool(self.get_unshipped_products()))
+        # return not (self.is_complete() or self.is_canceled() or bool(self.get_unshipped_products()))
+
+        # always allow changing status because of exceptions happening in OrderEditView
+        return True
 
     def is_fully_shipped(self):
         return (self.shipping_status == ShippingStatus.FULLY_SHIPPED)
@@ -958,10 +961,13 @@ class Order(MoneyPropped, models.Model):
         return (self.status.role == OrderStatusRole.CANCELED)
 
     def can_set_canceled(self):
-        canceled = (self.status.role == OrderStatusRole.CANCELED)
-        paid = self.is_paid()
-        shipped = (self.shipping_status != ShippingStatus.NOT_SHIPPED)
-        return not (canceled or paid or shipped)
+        # canceled = (self.status.role == OrderStatusRole.CANCELED)
+        # paid = self.is_paid()
+        # shipped = (self.shipping_status != ShippingStatus.NOT_SHIPPED)
+        # return not (canceled or paid or shipped)
+
+        # always allow changing status because of exceptions happening in OrderEditView
+        return True
 
     def update_shipping_status(self):
         status_before_update = self.shipping_status
