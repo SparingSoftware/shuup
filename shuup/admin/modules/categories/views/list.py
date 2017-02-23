@@ -17,22 +17,13 @@ from shuup.core.models import Category, CategoryStatus, CategoryVisibility
 class CategoryListView(PicotableListView):
     model = Category
     default_columns = [
-        Column("image", _("Image"), sortable=False, linked=True, raw=True),
         Column(
             "name", _(u"Name"), sortable=False, display="format_name", linked=True,
             filter_config=MPTTFilter(
                 choices="get_name_filter_choices",
                 filter_field="id"
             )
-        ),
-        Column(
-            "status", _(u"Status"),
-            filter_config=ChoicesFilter(
-               choices=CategoryStatus.choices,
-               default=CategoryStatus.VISIBLE.value
-            )
-        ),
-        Column("visibility", _(u"Visibility"), filter_config=ChoicesFilter(choices=CategoryVisibility.choices)),
+        )
     ]
 
     def get_name_filter_choices(self):

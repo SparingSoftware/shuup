@@ -21,7 +21,7 @@ class CategoryEditView(SaveFormPartsMixin, FormPartsViewMixin, CreateOrUpdateVie
     model = Category
     template_name = "shuup/admin/categories/edit.jinja"
     context_object_name = "category"
-    base_form_part_classes = [CategoryBaseFormPart, CategoryProductFormPart]
+    base_form_part_classes = [CategoryBaseFormPart]
     form_part_class_provide_key = "admin_category_form_part"
 
     def get_toolbar(self):

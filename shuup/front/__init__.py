@@ -15,9 +15,6 @@ class ShuupFrontAppConfig(AppConfig):
     label = "shuup_front"
 
     provides = {
-        "admin_category_form_part": [
-            "shuup.front.admin_module.sorts_and_filters.form_parts.ConfigurationCategoryFormPart"
-        ],
         "admin_module": [
             "shuup.front.admin_module.CartAdminModule",
         ],
