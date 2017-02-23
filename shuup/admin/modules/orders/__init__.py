@@ -140,15 +140,15 @@ class OrderModule(AdminModule):
                 ordering=1,
                 aliases=[_("Show orders")]
             ),
-            MenuEntry(
-                text=_("Order Status"),
-                icon="fa fa-inbox",
-                url="shuup_admin:order_status.list",
-                category=STOREFRONT_MENU_CATEGORY,
-                subcategory="settings",
-                ordering=1,
-                aliases=[_("List Statuses")]
-            ),
+            # MenuEntry(
+            #     text=_("Order Status"),
+            #     icon="fa fa-inbox",
+            #     url="shuup_admin:order_status.list",
+            #     category=STOREFRONT_MENU_CATEGORY,
+            #     subcategory="settings",
+            #     ordering=1,
+            #     aliases=[_("List Statuses")]
+            # ),
         ]
 
     def get_required_permissions(self):
