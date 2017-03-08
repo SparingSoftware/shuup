@@ -1,4 +1,3 @@
-
 /**
  * This file is part of Shuup.
  *
@@ -14,7 +13,18 @@ function activateEditor($editor, attrs={}) {
             onBlur: function() {
                 $editor.parent().find("textarea.hidden").val($(this).summernote('code'));
             }
-        }
+        },
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'hr']],
+            ['view', ['fullscreen']],
+            ['help', ['help']]
+        ]
     }, attrs));
 }
 
